@@ -12,7 +12,6 @@ BuildRequires:	SDL-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	zlib-devel
-
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,15 +36,19 @@ ST i STE.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_mandir}/man1}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install doc/hatari.1	$RPM_BUILD_ROOT%{_mandir}/man1/hatari.1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc readme.txt doc/*.txt
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_mandir}/man1/hatari.1*
