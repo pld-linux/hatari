@@ -1,12 +1,12 @@
 Summary:	hatari - an Atari ST and STE emulator for Linux
 Summary(pl.UTF-8):	hatari - emulator Atari ST i STE dla Linuksa
 Name:		hatari
-Version:	0.90
+Version:	0.95
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		Applications/Emulators
 Source0:	http://dl.sourceforge.net/hatari/%{name}-%{version}.tar.gz
-# Source0-md5:	2e5d1e329ebbf6c75ccab8c4f9a78f11
+# Source0-md5:	5f1ca3f29e74654bf12e8afd42bb7d0a
 URL:		http://hatari.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	autoconf
