@@ -1,0 +1,16 @@
+--- hatari-1.0.1/Makefile~	2008-02-05 23:31:45.000000000 +0100
++++ hatari-1.0.1/Makefile	2008-04-02 19:17:26.045536112 +0200
+@@ -56,13 +56,9 @@
+ 	$(INSTALL) -d $(DESTDIR)$(BINDIR)
+ 	$(INSTALL) -d $(DESTDIR)$(DATADIR)
+ 	$(INSTALL) -d $(DESTDIR)$(MANDIR)
+-	$(INSTALL) -d $(DESTDIR)$(DOCDIR)
+-	$(INSTALL) -d $(DESTDIR)$(DOCDIR)/images
+ 	$(INSTALL_PROGRAM) src/hatari $(DESTDIR)$(BINDIR)/hatari
+ 	$(INSTALL_DATA) src/hatari-icon.bmp $(DESTDIR)$(DATADIR)/hatari-icon.bmp
+ 	if test -f src/tos.img -a \! -f $(DESTDIR)$(DATADIR)/tos.img ; then \
+ 	  $(INSTALL_DATA) src/tos.img $(DESTDIR)$(DATADIR)/tos.img ; \
+ 	fi
+ 	$(INSTALL_DATA) hatari.1.gz $(DESTDIR)$(MANDIR)/
+-	$(INSTALL_DATA) doc/*.txt doc/*.html $(DESTDIR)$(DOCDIR)/
+-	$(INSTALL_DATA) doc/images/*.png $(DESTDIR)$(DOCDIR)/images/
