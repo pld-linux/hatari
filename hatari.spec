@@ -38,12 +38,13 @@ Atari ST i STE.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_mandir}/{,fr}/man1}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install doc/hatari.1	$RPM_BUILD_ROOT%{_mandir}/man1/hatari.1
+install doc/fr/hatari.1	$RPM_BUILD_ROOT%{_mandir}/fr/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -54,3 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man1/hatari.1*
+%{_mandir}/fr/man1/hatari.1*
