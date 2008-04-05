@@ -55,4 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man1/hatari.1*
-%{_mandir}/fr/man1/hatari.1*
+%lang(fr) %{_mandir}/fr/man1/hatari.1*
