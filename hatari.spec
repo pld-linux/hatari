@@ -12,6 +12,7 @@ URL:		http://hatari.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
