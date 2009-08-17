@@ -18,7 +18,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
-Requires:	python >= 2.4
+Requires:	python >= 1:2.4
 Requires:	python-pygtk-gtk >= 2.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
