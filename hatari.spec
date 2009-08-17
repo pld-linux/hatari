@@ -16,6 +16,7 @@ BuildRequires:	automake
 BuildRequires:	libpng-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
+BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 Requires:	python >= 1:2.4
@@ -36,6 +37,7 @@ Atari ST i STE.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%{__sed} -i 's#path=$(DATAPATH)#path=%{_datadir}/hatari/hatariui#' python-ui/Makefile
 
 %build
 %{__aclocal}
@@ -59,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc readme.txt doc/*.txt
+%doc readme.txt doc/*.txt python-ui/{Changelog,README,TODO}
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man1/hatari.1*
