@@ -10,6 +10,7 @@ Source0:	http://download.berlios.de/hatari/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-useless_files.patch
 Patch1:		%{name}-destdir.patch
 Patch2:		%{name}-python_init.patch
+Patch3:		%{name}-desktop.patch
 URL:		http://hatari.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf
@@ -31,14 +32,15 @@ of most of the ST and STE hardware.
 
 %description -l pl.UTF-8
 Hatari jest emulatorem Atari ST i STE dla Linuksa i innych systemów
-obsługiwanych przez bibliotekę SDL. Hatari emuluje większość sprzętu
-Atari ST i STE.
+obsługiwanych przez bibliotekę SDL. Hatari emuluje większość
+sprzętu Atari ST i STE.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %{__sed} -i 's#path=$(DATAPATH)#path=%{_datadir}/hatari/hatariui#' python-ui/Makefile
 
 %build
@@ -68,3 +70,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_mandir}/man1/hatari.1*
 %lang(fr) %{_mandir}/fr/man1/hatari.1*
+%{_desktopdir}/hatariui.desktop
+%{_iconsdir}/hicolor/32x32/apps/hatari-icon.png
