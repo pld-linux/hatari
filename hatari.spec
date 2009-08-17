@@ -9,6 +9,7 @@ Source0:	http://download.berlios.de/hatari/%{name}-%{version}.tar.bz2
 # Source0-md5:	1440230be3dd38098f4e0ef36b0a90df
 Patch0:		%{name}-useless_files.patch
 Patch1:		%{name}-destdir.patch
+Patch2:		%{name}-python_init.patch
 URL:		http://hatari.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf
@@ -37,6 +38,7 @@ Atari ST i STE.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %{__sed} -i 's#path=$(DATAPATH)#path=%{_datadir}/hatari/hatariui#' python-ui/Makefile
 
 %build
