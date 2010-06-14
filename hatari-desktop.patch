@@ -8,5 +8,5 @@
  Name=Hatari UI
  Exec=hatariui
  Icon=hatari-icon
-+Categories=Application;Game;
++Categories=Utility;Emulator;
 +# vi: encoding=utf-8

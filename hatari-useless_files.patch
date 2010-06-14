@@ -1,29 +1,21 @@
---- hatari-1.3.1/Makefile~	2009-09-05 00:52:41.000000000 +0200
-+++ hatari-1.3.1/Makefile	2009-09-08 12:33:20.000000000 +0200
-@@ -61,8 +61,6 @@
- 	$(INSTALL) -d $(DESTDIR)$(BINDIR)
- 	$(INSTALL) -d $(DESTDIR)$(DATADIR)
- 	$(INSTALL) -d $(DESTDIR)$(MANDIR)
--	$(INSTALL) -d $(DESTDIR)$(DOCDIR)
--	$(INSTALL) -d $(DESTDIR)$(DOCDIR)/images
- 	$(INSTALL_PROGRAM) src/hatari $(DESTDIR)$(BINDIR)/hatari
- 	$(INSTALL_PROGRAM) tools/hmsa/hmsa $(DESTDIR)$(BINDIR)/hmsa
- 	$(INSTALL_SCRIPT) tools/zip2st.sh $(DESTDIR)$(BINDIR)/zip2st
-@@ -71,6 +69,4 @@
- 	  $(INSTALL_DATA) src/tos.img $(DESTDIR)$(DATADIR)/tos.img ; \
- 	fi
- 	$(INSTALL_DATA) hatari.1.gz $(DESTDIR)$(MANDIR)/
--	$(INSTALL_DATA) doc/*.txt doc/*.html $(DESTDIR)$(DOCDIR)/
--	$(INSTALL_DATA) doc/images/*.png $(DESTDIR)$(DOCDIR)/images/
- 	$(MAKE) -C python-ui/ install
---- hatari-1.3.1/python-ui/Makefile~	2009-09-08 12:32:43.000000000 +0200
-+++ hatari-1.3.1/python-ui/Makefile	2009-09-08 12:34:19.000000000 +0200
-@@ -25,7 +25,7 @@
- 	$(INSTALL) -d $(DESTDIR)$(DATAPATH)
- 	$(INSTALL_SCRIPT) hatariui.py debugui.py $(DESTDIR)$(DATAPATH)/
- 	$(INSTALL_DATA) config.py dialogs.py hatari.py uihelpers.py $(DESTDIR)$(DATAPATH)/
--	$(INSTALL_DATA) README TODO Changelog *.png $(DESTDIR)$(DATAPATH)/
-+	$(INSTALL_DATA) *.png $(DESTDIR)$(DATAPATH)/
- 	$(INSTALL) -d $(DESTDIR)$(ICONPATH)
- 	$(INSTALL_DATA) hatari-icon.png $(DESTDIR)$(ICONPATH)/
- 	$(INSTALL) -d $(DESTDIR)$(DESKPATH)
+--- hatari-1.4.0/CMakeLists.txt~	2010-06-12 13:04:40.000000000 +0200
++++ hatari-1.4.0/CMakeLists.txt	2010-06-14 15:05:28.646457915 +0200
+@@ -180,10 +180,6 @@
+ 	set(MANDIR share/man/man1)
+ endif()
+ 
+-if(NOT DOCDIR)
+-	set(DOCDIR share/doc/hatari)
+-endif()
+-
+ # #########################################
+ # Create config.h and recurse into subdirs:
+ # #########################################
+@@ -192,7 +188,6 @@
+ 		${CMAKE_BINARY_DIR}/config.h)
+ 
+ add_subdirectory(src)
+-add_subdirectory(doc)
+ add_subdirectory(tools)
+ 
+ include(FindPythonInterp)
