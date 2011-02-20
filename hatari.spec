@@ -1,6 +1,3 @@
-#
-# TODO: try to pass our CFLAGS and LDFLAGS
-#
 Summary:	hatari - an Atari ST and STE emulator for Linux
 Summary(pl.UTF-8):	hatari - emulator Atari ST i STE dla Linuksa
 Name:		hatari
@@ -15,10 +12,11 @@ Patch1:		%{name}-python_init.patch
 Patch2:		%{name}-desktop.patch
 URL:		http://hatari.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.0
-BuildRequires:	cmake
+BuildRequires:	cmake >= 2.6
 BuildRequires:	libpng-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
+BuildRequires:	rpmbuild(macros) >= 1.577
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
@@ -46,11 +44,8 @@ Atari ST i STE.
 install -d build
 cd build
 %cmake .. \
-	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64
-%endif
+	-DBUILD_SHARED_LIBS:BOOL=OFF \
+	-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 
 %{__make}
 
@@ -69,9 +64,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc readme.txt doc/*.txt python-ui/{README,TODO}
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/atari-hd-image.sh
+%attr(755,root,root) %{_bindir}/hatari
+%attr(755,root,root) %{_bindir}/hatari-console.py
+%attr(755,root,root) %{_bindir}/hatariui
+%attr(755,root,root) %{_bindir}/hmsa
+%attr(755,root,root) %{_bindir}/zip2st.sh
 %{_datadir}/%{name}
-%{_mandir}/man1/hatari*.1*
+%{_mandir}/man1/hatariui.1*
 %lang(fr) %{_mandir}/fr/man1/hatari.1*
 %{_desktopdir}/hatariui.desktop
 %{_iconsdir}/hicolor/32x32/apps/hatari-icon.png
