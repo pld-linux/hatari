@@ -1,12 +1,12 @@
 Summary:	hatari - an Atari ST and STE emulator for Linux
 Summary(pl.UTF-8):	hatari - emulator Atari ST i STE dla Linuksa
 Name:		hatari
-Version:	1.5.0
+Version:	1.9.0
 Release:	1
 License:	GPL v2+
 Group:		Applications/Emulators
-Source0:	http://download.berlios.de/hatari/%{name}-%{version}.tar.bz2
-# Source0-md5:	16277cff73ec3a342b87b7b7ea3932f4
+Source0:	http://download.tuxfamily.org/hatari/%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	24e54b19958943dbe5ac1b1f6f32b284
 Patch0:		%{name}-useless_files.patch
 Patch1:		%{name}-python_init.patch
 Patch2:		%{name}-desktop.patch
@@ -40,8 +40,8 @@ Atari ST i STE.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
+#%patch1 -p1
+#%patch2 -p1
 
 sed -i -e '1s,#!/usr/bin/env python,#!/usr/bin/python,' python-ui/*.py tools/hconsole/*.py
 
@@ -84,12 +84,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/hatariui
 %attr(755,root,root) %{_bindir}/hmsa
 %attr(755,root,root) %{_bindir}/zip2st
+%attr(755,root,root) %{_bindir}/atari-convert-dir
+%attr(755,root,root) %{_bindir}/gst2ascii
+%attr(755,root,root) %{_bindir}/hatari_profile.py
 %{_datadir}/%{name}
 %{_mandir}/man1/atari-hd-image.1*
 %{_mandir}/man1/hatariui.1*
 %{_mandir}/man1/hconsole.1*
 %{_mandir}/man1/hmsa.1*
 %{_mandir}/man1/zip2st.1*
+%{_mandir}/man1/atari-convert-dir.1*
+%{_mandir}/man1/gst2ascii.1*
+%{_mandir}/man1/hatari_profile.1*
 %lang(fr) %{_mandir}/fr/man1/hatari.1*
 %{_desktopdir}/hatariui.desktop
-%{_iconsdir}/hicolor/32x32/apps/hatari-icon.png
+%{_desktopdir}/hatari.desktop
+%{_iconsdir}/hicolor/*/*/*.*
+
