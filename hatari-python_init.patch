@@ -1,0 +1,33 @@
+--- hatari-1.5.0/python-ui/hatariui.orig	2011-07-19 00:32:26.000000000 +0200
++++ hatari-1.5.0/python-ui/hatariui	2011-07-23 10:05:56.946083979 +0200
+@@ -6,7 +6,7 @@
+ path=${0%/*}
+ name=${0##*/}
+ 
+-if [ ! -e $path/$name.py ]; then
++if [ ! -e $path/$name.pyc ]; then
+ 	# Assume package has been relocated, try relative data directory:
+ 	path=${0%/*}/../share/hatari/hatariui
+ fi
+@@ -20,18 +20,18 @@
+ export HATARI_SYSTEM_CONFDIR=$conf
+ 
+ # example setup for Hatari UI
+-$path/$name.py --right "about,|,run,pause,forward,|,reset,|,quit" --embed $*
++python $path/$name.pyc --right "about,|,run,pause,forward,|,reset,|,quit" --embed $*
+ exit 0
+ 
+ # test setup without embedding, duplicate toggles
+-$path/$name.py --top "about,run,pause,quit" \
++python $path/$name.pyc --top "about,run,pause,quit" \
+ --panel "Testpanel,pause,>,close" \
+ --bottom "sound,|,forward,pause,|,Testpanel" \
+ $*
+ exit 0
+ 
+ # test setup with embedding and all available controls
+-$path/$name.py --embed \
++python $path/$name.pyc --embed \
+ --top "about,|,run,pause,|,reset,debug,|,quit" \
+ --left "run,pause,reset,machine,about" \
+ --panel "Keys,F1=59,F2=60,F3=61,F4=62,F5=63,F6=64,F7=65,F8=66,F9=67,F10=68,>,Macro=Test,Undo=97,Help=98,Enter=114,>,close" \

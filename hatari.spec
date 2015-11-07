@@ -8,6 +8,7 @@ Group:		Applications/Emulators
 Source0:	http://download.tuxfamily.org/hatari/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	24e54b19958943dbe5ac1b1f6f32b284
 Patch0:		%{name}-useless_files.patch
+Patch1:		%{name}-python_init.patch
 URL:		http://hatari.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.0
 BuildRequires:	cmake >= 2.6
@@ -38,6 +39,7 @@ Atari ST i STE.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 sed -i -e '1s,#!/usr/bin/env python,#!/usr/bin/python,' python-ui/*.py tools/hconsole/*.py
 
