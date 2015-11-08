@@ -1,3 +1,8 @@
+#
+# Conditional build:
+%bcond_with	sdl2		# use SDL 2 instead of 1.2
+%bcond_with	capsimage	# use capsimage for .IPF, .RAW and .CTR disk image support
+#
 Summary:	hatari - an Atari ST and STE emulator for Linux
 Summary(pl.UTF-8):	hatari - emulator Atari ST i STE dla Linuksa
 Name:		hatari
@@ -10,8 +15,10 @@ Source0:	http://download.tuxfamily.org/hatari/%{version}/%{name}-%{version}.tar.
 Patch0:		%{name}-useless_files.patch
 Patch1:		%{name}-python_init.patch
 URL:		http://hatari.sourceforge.net/
-BuildRequires:	SDL-devel >= 1.2.0
+%{!?with_sdl2:BuildRequires:	SDL-devel >= 1.2.0}
+%{?with_sdl2:BuildRequires:	SDL2-devel >= 2.0}
 BuildRequires:	cmake >= 2.6
+%{?with_capsimage:BuildRequires:	libcapsimage-devel >= 4}
 BuildRequires:	libpng-devel
 BuildRequires:	pkgconfig
 BuildRequires:	portaudio-devel
@@ -41,14 +48,15 @@ Atari ST i STE.
 %patch0 -p1
 %patch1 -p1
 
-sed -i -e '1s,#!/usr/bin/env python,#!/usr/bin/python,' python-ui/*.py tools/hconsole/*.py
+sed -i -e '1s,#!/usr/bin/env python,#!/usr/bin/python,' python-ui/*.py tools/debugger/*.py tools/hconsole/*.py
 
 %build
 install -d build
 cd build
 %cmake .. \
 	-DBUILD_SHARED_LIBS:BOOL=OFF \
-	-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+	-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+	%{?with_sdl2:-DENABLE_SDL2=ON}
 
 %{__make}
 
@@ -66,10 +74,10 @@ install doc/fr/hatari.1	$RPM_BUILD_ROOT%{_mandir}/fr/man1
 %py_postclean %{_datadir}/%{name}/hatariui
 
 for f in README TODO ; do
-	mv python-ui/${f} python-ui/${f}-ui
+	%{__mv} python-ui/${f} python-ui/${f}-ui
 done
-mv tools/hconsole/{release-notes.txt,release-notes-hconsole.txt}
-mv python-ui/{release-notes.txt,release-notes-ui.txt}
+%{__mv} tools/hconsole/{release-notes.txt,release-notes-hconsole.txt}
+%{__mv} python-ui/{release-notes.txt,release-notes-ui.txt}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,5 +105,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(fr) %{_mandir}/fr/man1/hatari.1*
 %{_desktopdir}/hatariui.desktop
 %{_desktopdir}/hatari.desktop
-%{_iconsdir}/hicolor/*/*/*.*
-
+%{_iconsdir}/hicolor/*/apps/hatari.*
+%{_iconsdir}/hicolor/*/mimetypes/application-x-st-disk-image.*
+%{_datadir}/mime/packages/hatari.xml
