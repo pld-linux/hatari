@@ -14,6 +14,7 @@ Source0:	http://download.tuxfamily.org/hatari/%{version}/%{name}-%{version}.tar.
 # Source0-md5:	24e54b19958943dbe5ac1b1f6f32b284
 Patch0:		%{name}-useless_files.patch
 Patch1:		%{name}-python_init.patch
+Patch2:		%{name}-desktop.patch
 URL:		http://hatari.sourceforge.net/
 %{!?with_sdl2:BuildRequires:	SDL-devel >= 1.2.0}
 %{?with_sdl2:BuildRequires:	SDL2-devel >= 2.0}
@@ -47,6 +48,7 @@ Atari ST i STE.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 sed -i -e '1s,#!/usr/bin/env python,#!/usr/bin/python,' python-ui/*.py tools/debugger/*.py tools/hconsole/*.py
 
