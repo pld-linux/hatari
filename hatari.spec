@@ -6,12 +6,12 @@
 Summary:	hatari - an Atari ST and STE emulator for Linux
 Summary(pl.UTF-8):	hatari - emulator Atari ST i STE dla Linuksa
 Name:		hatari
-Version:	1.9.0
+Version:	2.1.0
 Release:	1
 License:	GPL v2+
 Group:		Applications/Emulators
 Source0:	http://download.tuxfamily.org/hatari/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	24e54b19958943dbe5ac1b1f6f32b284
+# Source0-md5:	f9c4b73695b28e7cf715373e88e4f683
 Patch0:		%{name}-useless_files.patch
 Patch1:		%{name}-python_init.patch
 Patch2:		%{name}-desktop.patch
@@ -109,4 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/hatari.desktop
 %{_iconsdir}/hicolor/*/apps/hatari.*
 %{_iconsdir}/hicolor/*/mimetypes/application-x-st-disk-image.*
+%{_iconsdir}/hicolor/*/mimetypes/application-vnd.fastcopy-disk-image.*
+%{_iconsdir}/hicolor/*/mimetypes/application-vnd.msa-disk-image.*
+%{_iconsdir}/hicolor/*/mimetypes/application-x-stx-disk-image.*
 %{_datadir}/mime/packages/hatari.xml
