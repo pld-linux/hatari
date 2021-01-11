@@ -1,19 +1,20 @@
---- hatari-1.9.0/share/applications/hatari.desktop	2015-09-10 23:16:03.000000000 +0200
-+++ hatari-1.9.0/share/applications/hatari.desktop.new	2015-11-08 22:02:18.667818758 +0100
-@@ -7,5 +7,5 @@
+--- hatari-2.3.1/share/applications/hatari.desktop.orig	2021-01-11 19:37:11.294596914 +0100
++++ hatari-2.3.1/share/applications/hatari.desktop	2021-01-11 19:40:28.446862182 +0100
+@@ -6,6 +6,6 @@
  Exec=hatari %f
  Icon=hatari
- MimeType=application/x-st-disk-image;application/vnd.msa-disk-image;application/vnd.fastcopy-disk-image;application/x-stx-disk-image
+ MimeType=application/x-st-disk-image;application/vnd.msa-disk-image;application/vnd.fastcopy-disk-image;application/x-stx-disk-image;
 -Categories=Game;Emulator;
 +Categories=Utility;Emulator;
+ Keywords=Emulator;Atari;Atari ST;Atari Falcon;
  Terminal=false
---- hatari-1.9.0/python-ui/hatariui.desktop	2015-09-10 23:16:03.000000000 +0200
-+++ hatari-1.9.0/python-ui/hatariui.desktop.new	2015-11-08 22:00:08.741704673 +0100
-@@ -5,3 +5,7 @@
- Name=Hatari UI
+--- hatari-2.3.1/python-ui/hatariui.desktop.orig	2021-01-11 19:37:11.294596914 +0100
++++ hatari-2.3.1/python-ui/hatariui.desktop	2021-01-11 19:41:11.523295483 +0100
+@@ -6,6 +6,6 @@
  Exec=hatariui
  Icon=hatari
-+Keywords=virtualization
+ StartupNotify=true
+-Categories=Game;Emulator;
 +Categories=Utility;Emulator;
-+Comment=UI for hatari, emulator of Atari ST/STE/Falcon computers
-+
+ Keywords=Emulator;Atari;Atari ST;Atari Falcon;
+ Terminal=false

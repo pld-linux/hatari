@@ -1,6 +1,6 @@
---- hatari-1.5.0/CMakeLists.txt.orig	2011-07-19 00:32:26.000000000 +0200
-+++ hatari-1.5.0/CMakeLists.txt	2011-07-23 09:53:31.982725700 +0200
-@@ -220,10 +220,6 @@
+--- hatari-2.3.1/CMakeLists.txt.orig	2020-12-26 22:50:12.000000000 +0100
++++ hatari-2.3.1/CMakeLists.txt	2021-01-11 19:36:50.048045349 +0100
+@@ -311,10 +311,6 @@
  	set(MANDIR share/man/man1)
  endif()
  
@@ -11,11 +11,11 @@
  if(NOT ETCDIR)
  	if(WIN32)
  		set(ETCDIR .)
-@@ -241,7 +237,6 @@
+@@ -342,7 +338,6 @@
  		${CMAKE_BINARY_DIR}/config.h)
  
  add_subdirectory(src)
 -add_subdirectory(doc)
+ add_subdirectory(tests)
  add_subdirectory(tools)
  
- include(FindPythonInterp)
